@@ -343,7 +343,12 @@ BOOL isVersionStandard(NSString* version) {
 
 			BOOL targetWritable = [self canWriteToURL:targetURL];
 			BOOL parentWritable = [self canWriteToURL:targetURL.URLByDeletingLastPathComponent];
-			return [SQRLShipItLauncher launchPrivileged:!targetWritable || !parentWritable];
+			BOOL launchPrivileged = !targetWritable || !parentWritable;
+			if ([[NSUserDefaults standardUserDefaults] boolForKey:@"SquirrelMacEnableDirectContentsWrite"]) {
+				// If SquirrelMacEnableDirectContentsWrite is enabled we don't care if the parent directory is writeable or not
+				BOOL launchPrivileged = !targetWritable;
+			}
+			return [SQRLShipItLauncher launchPrivileged:launchPrivileged];
 		}]
 		replayLazily]
 		setNameWithFormat:@"shipItLauncher"];
