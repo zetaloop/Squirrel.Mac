@@ -36,6 +36,7 @@ const NSInteger SQRLInstallerErrorMissingInstallationData = -5;
 const NSInteger SQRLInstallerErrorInvalidState = -6;
 const NSInteger SQRLInstallerErrorMovingAcrossVolumes = -7;
 const NSInteger SQRLInstallerErrorChangingPermissions = -8;
+const NSInteger SQRLInstallerErrorAppStillRunning = -9;
 
 NSString * const SQRLShipItInstallationAttemptsKey = @"SQRLShipItInstallationAttempts";
 NSString * const SQRLInstallerOwnedBundleKey = @"SQRLInstallerOwnedBundle";
@@ -286,6 +287,19 @@ NSString * const SQRLInstallerOwnedBundleKey = @"SQRLInstallerOwnedBundle";
 			return [[[[self
 				renameIfNeeded:request updateBundleURL:updateBundleURL]
 				flattenMap:^(SQRLShipItRequest *request) {
+					// Final validation that the application is not running again;
+					NSArray *apps = [[NSRunningApplication runningApplicationsWithBundleIdentifier:request.bundleIdentifier] filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(NSRunningApplication *app, NSDictionary *bindings) {
+						return [[[app bundleURL] URLByStandardizingPath] isEqual:request.targetBundleURL];
+					}]];
+					if ([apps count] != 0) {
+						NSLog(@"Aborting update attempt because there are %lu running instances of the target app", [apps count]);
+						NSDictionary *errorInfo = @{
+							NSLocalizedDescriptionKey: NSLocalizedString(@"App Still Running Error", nil),
+							NSLocalizedRecoverySuggestionErrorKey: NSLocalizedString(@"All instances of the target application should be quit during the update process", nil),
+						};
+						return [RACSignal error:[NSError errorWithDomain:SQRLInstallerErrorDomain code:SQRLInstallerErrorAppStillRunning userInfo:errorInfo]];
+					}
+
 					return [[self acquireTargetBundleURLForRequest:request] concat:[RACSignal return:request]];
 				}]
 				flattenMap:^(SQRLShipItRequest *request) {
