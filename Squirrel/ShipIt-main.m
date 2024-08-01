@@ -186,10 +186,14 @@ static void installRequest(RACSignal *readRequestSignal, NSString *applicationId
 							NSLog(@"New ShipIt exited");
 						} else {
 							NSLog(@"Attempting to launch app on lower than 11.0");
+// TODO: https://github.com/electron/electron/issues/43168
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
 							if (![NSWorkspace.sharedWorkspace launchApplicationAtURL:bundleURL options:NSWorkspaceLaunchDefault configuration:@{} error:&error]) {
 								NSLog(@"Could not launch application at %@: %@", bundleURL, error);
 								return;
 							}
+#pragma clang diagnostic pop
 
 							NSLog(@"Application launched at %@", bundleURL);
 						}
@@ -235,12 +239,16 @@ int main(int argc, const char * argv[]) {
 
 		if (strcmp(jobLabel, [launchSignal UTF8String]) == 0) {
 			NSLog(@"Detected this as a launch request");
+// TODO: https://github.com/electron/electron/issues/43168
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
 			NSError *error;
 			if (![NSWorkspace.sharedWorkspace launchApplicationAtURL:shipItStateURL options:NSWorkspaceLaunchDefault configuration:@{} error:&error]) {
 				NSLog(@"Could not launch application at %@: %@", shipItStateURL, error);
 			} else {
 				NSLog(@"Successfully launched application at %@", shipItStateURL);
 			}
+#pragma clang diagnostic pop
 			exit(EXIT_SUCCESS);
 		} else {
 			NSLog(@"Detected this as an install request");
