@@ -1,0 +1,42 @@
+name: Build Squirrel.Mac
+
+on:
+    workflow_dispatch: {}
+
+jobs:
+    build:
+        name: Build macOS
+        runs-on: macos-latest
+
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v4
+              with:
+                  submodules: true
+
+            - name: Run Bootstrap Script
+              run: |
+                  chmod +x script/bootstrap
+                  ./script/bootstrap
+
+            - name: Build Universal2
+              run: |
+                  xcodebuild \
+                    -workspace Squirrel.xcworkspace \
+                    -scheme Squirrel \
+                    -configuration Release \
+                    -sdk macosx \
+                    BUILD_DIR="${{ github.workspace }}/Build" \
+                    ARCHS="x86_64 arm64" \
+                    BUILD_ACTIVE_ARCH_ONLY=NO \
+                    MACOSX_DEPLOYMENT_TARGET=10.13 \
+                    CODE_SIGN_IDENTITY="" \
+                    CODE_SIGNING_REQUIRED=NO \
+                    CODE_SIGNING_ALLOWED=NO \
+                    clean build
+
+            - name: Upload Artifact
+              uses: actions/upload-artifact@v4
+              with:
+                  name: Squirrel.framework
+                  path: Build/Release/Squirrel.framework
