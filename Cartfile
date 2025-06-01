@@ -1,2 +1,2 @@
 github "Mantle/Mantle" ~> 1.5.3
-github "ReactiveCocoa/ReactiveCocoa" ~> 2.4.3
+github "ReactiveCocoa/ReactiveObjC" "74ab5baccc6f7202c8ac69a8d1e152c29dc1ea76"
