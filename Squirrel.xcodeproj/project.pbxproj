@@ -25,6 +25,7 @@
 		5397A69D187DF8610014A477 /* SQRLInstallerOwnedBundle.m in Sources */ = {isa = PBXBuildFile; fileRef = 5397A5EB187DA2570014A477 /* SQRLInstallerOwnedBundle.m */; };
 		53AACF4B17E9CA0500B41027 /* SQRLUpdate.h in Headers */ = {isa = PBXBuildFile; fileRef = 53AACF4917E9CA0500B41027 /* SQRLUpdate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		53AACF4C17E9CA0500B41027 /* SQRLUpdate.m in Sources */ = {isa = PBXBuildFile; fileRef = 53AACF4A17E9CA0500B41027 /* SQRLUpdate.m */; };
+		8259A9CF2DECCE9E00BA3091 /* ReactiveObjC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8259A9CE2DECCE9E00BA3091 /* ReactiveObjC.framework */; };
 		88CA21971BD980FC006693B7 /* MTLEXTRuntimeExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 88CA21941BD980FC006693B7 /* MTLEXTRuntimeExtensions.m */; };
 		88CA21981BD980FC006693B7 /* MTLEXTScope.m in Sources */ = {isa = PBXBuildFile; fileRef = 88CA21961BD980FC006693B7 /* MTLEXTScope.m */; };
 		D000218F17BACEFF0050109A /* SQRLZipArchiver.m in Sources */ = {isa = PBXBuildFile; fileRef = D000218D17BACEFF0050109A /* SQRLZipArchiver.m */; };
@@ -284,6 +285,7 @@
 		5397A69C187DF6490014A477 /* SQRLInstaller+Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SQRLInstaller+Private.h"; sourceTree = "<group>"; };
 		53AACF4917E9CA0500B41027 /* SQRLUpdate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SQRLUpdate.h; sourceTree = "<group>"; };
 		53AACF4A17E9CA0500B41027 /* SQRLUpdate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQRLUpdate.m; sourceTree = "<group>"; };
+		8259A9CE2DECCE9E00BA3091 /* ReactiveObjC.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ReactiveObjC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		88CA21911BD980FC006693B7 /* metamacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = metamacros.h; path = Carthage/Checkouts/Mantle/Mantle/extobjc/metamacros.h; sourceTree = SOURCE_ROOT; };
 		88CA21921BD980FC006693B7 /* MTLEXTKeyPathCoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MTLEXTKeyPathCoding.h; path = Carthage/Checkouts/Mantle/Mantle/extobjc/MTLEXTKeyPathCoding.h; sourceTree = SOURCE_ROOT; };
 		88CA21931BD980FC006693B7 /* MTLEXTRuntimeExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MTLEXTRuntimeExtensions.h; path = Carthage/Checkouts/Mantle/Mantle/extobjc/MTLEXTRuntimeExtensions.h; sourceTree = SOURCE_ROOT; };
@@ -481,6 +483,7 @@
 				533076EB17EB688300BDCCE0 /* IOKit.framework in Frameworks */,
 				D0C22BDB179CC00E00158214 /* Cocoa.framework in Frameworks */,
 				D4C4909918E46DE900786EFE /* Mantle.framework in Frameworks */,
+				8259A9CF2DECCE9E00BA3091 /* ReactiveObjC.framework in Frameworks */,
 				D4C4909B18E46DFE00786EFE /* ReactiveCocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -785,6 +788,7 @@
 		D0C22BD9179CC00E00158214 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8259A9CE2DECCE9E00BA3091 /* ReactiveObjC.framework */,
 				D0AFE3941A0029A700C6048F /* Nimble.framework */,
 				D0AFE3921A00297500C6048F /* Quick.framework */,
 				D4C4909A18E46DFE00786EFE /* ReactiveCocoa.framework */,
@@ -1091,6 +1095,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
