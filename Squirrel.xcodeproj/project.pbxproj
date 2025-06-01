@@ -25,7 +25,9 @@
 		5397A69D187DF8610014A477 /* SQRLInstallerOwnedBundle.m in Sources */ = {isa = PBXBuildFile; fileRef = 5397A5EB187DA2570014A477 /* SQRLInstallerOwnedBundle.m */; };
 		53AACF4B17E9CA0500B41027 /* SQRLUpdate.h in Headers */ = {isa = PBXBuildFile; fileRef = 53AACF4917E9CA0500B41027 /* SQRLUpdate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		53AACF4C17E9CA0500B41027 /* SQRLUpdate.m in Sources */ = {isa = PBXBuildFile; fileRef = 53AACF4A17E9CA0500B41027 /* SQRLUpdate.m */; };
-		8259A9CF2DECCE9E00BA3091 /* ReactiveObjC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8259A9CE2DECCE9E00BA3091 /* ReactiveObjC.framework */; };
+		82FFDF7C2DECE34C001286A5 /* ReactiveObjC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82FFDF7B2DECE34C001286A5 /* ReactiveObjC.framework */; };
+		82FFDF7E2DECE35E001286A5 /* ReactiveObjC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82FFDF7D2DECE35E001286A5 /* ReactiveObjC.framework */; };
+		82FFDF802DECE373001286A5 /* ReactiveObjC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82FFDF7F2DECE373001286A5 /* ReactiveObjC.framework */; };
 		88CA21971BD980FC006693B7 /* MTLEXTRuntimeExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 88CA21941BD980FC006693B7 /* MTLEXTRuntimeExtensions.m */; };
 		88CA21981BD980FC006693B7 /* MTLEXTScope.m in Sources */ = {isa = PBXBuildFile; fileRef = 88CA21961BD980FC006693B7 /* MTLEXTScope.m */; };
 		D000218F17BACEFF0050109A /* SQRLZipArchiver.m in Sources */ = {isa = PBXBuildFile; fileRef = D000218D17BACEFF0050109A /* SQRLZipArchiver.m */; };
@@ -286,6 +288,9 @@
 		53AACF4917E9CA0500B41027 /* SQRLUpdate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SQRLUpdate.h; sourceTree = "<group>"; };
 		53AACF4A17E9CA0500B41027 /* SQRLUpdate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQRLUpdate.m; sourceTree = "<group>"; };
 		8259A9CE2DECCE9E00BA3091 /* ReactiveObjC.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ReactiveObjC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		82FFDF7B2DECE34C001286A5 /* ReactiveObjC.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ReactiveObjC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		82FFDF7D2DECE35E001286A5 /* ReactiveObjC.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ReactiveObjC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		82FFDF7F2DECE373001286A5 /* ReactiveObjC.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ReactiveObjC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		88CA21911BD980FC006693B7 /* metamacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = metamacros.h; path = Carthage/Checkouts/Mantle/Mantle/extobjc/metamacros.h; sourceTree = SOURCE_ROOT; };
 		88CA21921BD980FC006693B7 /* MTLEXTKeyPathCoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MTLEXTKeyPathCoding.h; path = Carthage/Checkouts/Mantle/Mantle/extobjc/MTLEXTKeyPathCoding.h; sourceTree = SOURCE_ROOT; };
 		88CA21931BD980FC006693B7 /* MTLEXTRuntimeExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MTLEXTRuntimeExtensions.h; path = Carthage/Checkouts/Mantle/Mantle/extobjc/MTLEXTRuntimeExtensions.h; sourceTree = SOURCE_ROOT; };
@@ -468,6 +473,7 @@
 			files = (
 				D08D4E4717B451E50012B22D /* Squirrel.framework in Frameworks */,
 				D08D4E0D17B451500012B22D /* Cocoa.framework in Frameworks */,
+				82FFDF7E2DECE35E001286A5 /* ReactiveObjC.framework in Frameworks */,
 				D45F1A9418E47055005CE515 /* ReactiveCocoa.framework in Frameworks */,
 				D45F1A9518E47055005CE515 /* Mantle.framework in Frameworks */,
 			);
@@ -483,7 +489,7 @@
 				533076EB17EB688300BDCCE0 /* IOKit.framework in Frameworks */,
 				D0C22BDB179CC00E00158214 /* Cocoa.framework in Frameworks */,
 				D4C4909918E46DE900786EFE /* Mantle.framework in Frameworks */,
-				8259A9CF2DECCE9E00BA3091 /* ReactiveObjC.framework in Frameworks */,
+				82FFDF802DECE373001286A5 /* ReactiveObjC.framework in Frameworks */,
 				D4C4909B18E46DFE00786EFE /* ReactiveCocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -500,6 +506,7 @@
 				D0AFE3951A0029A700C6048F /* Nimble.framework in Frameworks */,
 				D0A6D2BC17B9FA9E00B2C3DF /* Security.framework in Frameworks */,
 				D0C22BF5179CC00E00158214 /* Squirrel.framework in Frameworks */,
+				82FFDF7C2DECE34C001286A5 /* ReactiveObjC.framework in Frameworks */,
 				D45F1A9218E46F2E005CE515 /* ReactiveCocoa.framework in Frameworks */,
 				D45F1A9318E46F2E005CE515 /* Mantle.framework in Frameworks */,
 			);
@@ -788,6 +795,9 @@
 		D0C22BD9179CC00E00158214 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				82FFDF7F2DECE373001286A5 /* ReactiveObjC.framework */,
+				82FFDF7D2DECE35E001286A5 /* ReactiveObjC.framework */,
+				82FFDF7B2DECE34C001286A5 /* ReactiveObjC.framework */,
 				8259A9CE2DECCE9E00BA3091 /* ReactiveObjC.framework */,
 				D0AFE3941A0029A700C6048F /* Nimble.framework */,
 				D0AFE3921A00297500C6048F /* Quick.framework */,
