@@ -16,3 +16,4 @@ profile
 DerivedData
 .idea/
 vendor
+/build/Release
