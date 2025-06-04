@@ -227,6 +227,7 @@ mac_framework_bundle("squirrel_framework") {
     "IOKit.framework",
     "Security.framework",
     "ServiceManagement.framework",
+    "UniformTypeIdentifiers.framework",
   ]
   sources = squirrel_filenames.headers + squirrel_filenames.sources
 

@@ -21,6 +21,7 @@
 #import <ReactiveObjC/EXTScope.h>
 #import <ReactiveObjC/ReactiveObjC.h>
 #import <sys/mount.h>
+#import <UniformTypeIdentifiers/UniformTypeIdentifiers.h>
 
 NSString * const SQRLUpdaterErrorDomain = @"SQRLUpdaterErrorDomain";
 NSString * const SQRLUpdaterServerDataErrorKey = @"SQRLUpdaterServerDataErrorKey";
@@ -590,7 +591,8 @@ BOOL isVersionStandard(NSString* version) {
 					return NO;
 				}
 
-				if (!UTTypeConformsTo((__bridge CFStringRef)type, kUTTypeApplicationBundle)) return NO;
+				UTType *uttype = [UTType typeWithIdentifier:type];
+				if (uttype == nil || ![uttype conformsToType:UTTypeApplicationBundle]) return NO;
 
 				NSBundle *bundle = [NSBundle bundleWithURL:URL];
 				if (bundle == nil) {
