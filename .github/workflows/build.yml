@@ -19,7 +19,20 @@ jobs:
                   chmod +x script/bootstrap
                   ./script/bootstrap
 
-            - name: Build Universal2
+            - name: Build ReactiveObjC
+              run: |
+                  xcodebuild \
+                    -project Carthage/Checkouts/ReactiveObjC/ReactiveObjC.xcodeproj \
+                    -scheme ReactiveObjC-macOS \
+                    -configuration Release \
+                    -destination "generic/platform=macOS" \
+                    BUILD_LIBRARY_FOR_DISTRIBUTION=NO \
+                    SKIP_INSTALL=NO \
+                    SYMROOT="$(pwd)/Carthage/Checkouts/ReactiveObjC/Build" \
+                    MACOSX_DEPLOYMENT_TARGET="10.13" \
+                    OTHER_CFLAGS="-Wno-error=deprecated-declarations -Wno-error=strict-prototypes"
+
+            - name: Build Squirrel
               run: |
                   xcodebuild \
                     -workspace Squirrel.xcworkspace \
