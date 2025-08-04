@@ -1,0 +1,49 @@
+From d7b9eabbf859481387fbbfc1e04a3e3f0c0a68f4 Mon Sep 17 00:00:00 2001
+From: zetaloop <zetaloop@outlook.com>
+Date: Mon, 4 Aug 2025 19:57:33 +0800
+Subject: refactor: remove signature verification logic
+
+diff --git a/Squirrel/SQRLInstaller.m b/Squirrel/SQRLInstaller.m
+index 8969cfd..23958df 100644
+--- a/Squirrel/SQRLInstaller.m
++++ b/Squirrel/SQRLInstaller.m
+@@ -244,7 +244,7 @@ - (RACSignal *)getRequiredKey:(NSString *)key fromRequest:(SQRLShipItRequest *)r
+ - (RACSignal *)prepareAndValidateUpdateBundleURLForRequest:(SQRLShipItRequest *)request {
+ 	NSParameterAssert(request != nil);
+ 
+-	return [[[[[[[self
++	return [[[[self
+ 		ownedTemporaryDirectoryURL]
+ 		flattenMap:^(NSURL *directoryURL) {
+ 			return [self copyBundleAtURL:request.updateBundleURL toDirectory:directoryURL];
+@@ -255,14 +255,6 @@ - (RACSignal *)prepareAndValidateUpdateBundleURLForRequest:(SQRLShipItRequest *)
+ 				ignoreValues]
+ 				concat:[RACSignal return:bundleURL]];
+ 		}]
+-		zipWith:[self codeSignatureForBundleAtURL:request.targetBundleURL]]
+-		reduceEach:^(NSURL *updateBundleURL, SQRLCodeSignature *codeSignature) {
+-			return [[[self
+-				verifyBundleAtURL:updateBundleURL usingSignature:codeSignature]
+-				ignoreValues]
+-				concat:[RACSignal return:updateBundleURL]];
+-		}]
+-		flatten]
+ 		setNameWithFormat:@"%@ -prepareAndValidateUpdateBundleURLForRequest: %@", self, request];
+ }
+ 
+diff --git a/Squirrel/SQRLUpdater.m b/Squirrel/SQRLUpdater.m
+index d156616..f0b4600 100644
+--- a/Squirrel/SQRLUpdater.m
++++ b/Squirrel/SQRLUpdater.m
+@@ -728,9 +728,8 @@ - (RACSignal *)verifyAndPrepareUpdate:(SQRLUpdate *)update fromBundle:(NSBundle
+ 	NSParameterAssert(update != nil);
+ 	NSParameterAssert(updateBundle != nil);
+ 
+-	return [[[[self.signature
+-		verifyBundleAtURL:updateBundle.bundleURL]
+-		then:^{
++	return [[[RACSignal
++		defer:^{
+ 			NSRunningApplication *currentApplication = NSRunningApplication.currentApplication;
+ 			NSBundle *appBundle = [NSBundle bundleWithURL:currentApplication.bundleURL];
+ 			BOOL preventDowngrades = [[appBundle objectForInfoDictionaryKey:@"ElectronSquirrelPreventDowngrades"] boolValue];
