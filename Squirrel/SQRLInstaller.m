@@ -244,7 +244,7 @@ NSString * const SQRLInstallerOwnedBundleKey = @"SQRLInstallerOwnedBundle";
 - (RACSignal *)prepareAndValidateUpdateBundleURLForRequest:(SQRLShipItRequest *)request {
 	NSParameterAssert(request != nil);
 
-	return [[[[[[[self
+	return [[[[self
 		ownedTemporaryDirectoryURL]
 		flattenMap:^(NSURL *directoryURL) {
 			return [self copyBundleAtURL:request.updateBundleURL toDirectory:directoryURL];
@@ -255,14 +255,6 @@ NSString * const SQRLInstallerOwnedBundleKey = @"SQRLInstallerOwnedBundle";
 				ignoreValues]
 				concat:[RACSignal return:bundleURL]];
 		}]
-		zipWith:[self codeSignatureForBundleAtURL:request.targetBundleURL]]
-		reduceEach:^(NSURL *updateBundleURL, SQRLCodeSignature *codeSignature) {
-			return [[[self
-				verifyBundleAtURL:updateBundleURL usingSignature:codeSignature]
-				ignoreValues]
-				concat:[RACSignal return:updateBundleURL]];
-		}]
-		flatten]
 		setNameWithFormat:@"%@ -prepareAndValidateUpdateBundleURLForRequest: %@", self, request];
 }
 

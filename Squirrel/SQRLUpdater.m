@@ -728,9 +728,8 @@ BOOL isVersionStandard(NSString* version) {
 	NSParameterAssert(update != nil);
 	NSParameterAssert(updateBundle != nil);
 
-	return [[[[self.signature
-		verifyBundleAtURL:updateBundle.bundleURL]
-		then:^{
+	return [[[RACSignal
+		defer:^{
 			NSRunningApplication *currentApplication = NSRunningApplication.currentApplication;
 			NSBundle *appBundle = [NSBundle bundleWithURL:currentApplication.bundleURL];
 			BOOL preventDowngrades = [[appBundle objectForInfoDictionaryKey:@"ElectronSquirrelPreventDowngrades"] boolValue];
