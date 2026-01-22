@@ -16,18 +16,19 @@ You should not use this in production.
 Checkout [Electron's build docs](https://www.electronjs.org/docs/latest/development/build-instructions-gn).
 
 - Set up your build environment
-  - Xcode, Python, Node.js, [**depot_tools**](https://www.electronjs.org/docs/latest/development/build-instructions-gn#gn-prerequisites), etc.
+  - Xcode, Python, Node.js, etc.
   - a day of free time
+  - `npm install -g @electron/build-tools`
 
 - Get the Electron code
     ```bash
     mkdir electron && cd electron
-    gclient config --name "src/electron" --unmanaged https://github.com/electron/electron
-    gclient sync --with_branch_heads --with_tags
-    # ↑ This can take hours and use up to 100GB of disk space.
+    e init squirrelmac
+    e sync
+    # ↑ This can take hours and use up to 70GB of disk space.
 
-    cd src
-    export CHROMIUM_BUILDTOOLS_PATH=`pwd`/buildtools
+    cd electron/src
+    e shell  # enter the electron build environment
     ```
 
 - Apply this patch to remove the signature verification logic
